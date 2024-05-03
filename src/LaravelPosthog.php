@@ -25,6 +25,10 @@ class LaravelPosthog
 
     private function posthogEnabled(): bool
     {
+        if (strcmp(env('posthog.allow_domain'), request()->host())) {
+            return false;
+        } 
+
         if (!config('posthog.enabled') || config('posthog.key') === '') {
             return false;
         }
