@@ -25,7 +25,7 @@ class LaravelPosthog
 
     private function posthogEnabled(): bool
     {
-        if (strcmp(env('posthog.allow_domain'), request()->host())) {
+        if (strcmp(config('posthog.allow_domain'), request()->host())) {
             return false;
         } 
 
